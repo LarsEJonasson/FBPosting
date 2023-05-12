@@ -1,0 +1,52 @@
+maj 01, 2023 10:51:28 EM org.example.GUI getLogin
+INFO: Reading login credentials from Swing input
+maj 01, 2023 10:51:48 EM org.example.GUI getLogin
+INFO: Saving login credentials to file
+maj 01, 2023 10:58:24 EM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 12:44:08 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 12:44:08 FM org.example.GUI readCredentialsFromFile
+VARNING: Failed to read login credentials from file
+maj 12, 2023 12:51:26 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 12:54:59 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 1:22:26 FM org.example.GUI getLogin
+INFO: Reading login credentials from file
+maj 12, 2023 1:22:26 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 1:23:16 FM org.example.GUI getLogin
+INFO: Reading login credentials from Swing input
+maj 12, 2023 1:24:22 FM org.example.GUI getLogin
+INFO: Reading login credentials from Swing input
+maj 12, 2023 1:24:42 FM org.example.GUI saveCredentialsToFile
+INFO: Saving login credentials to file
+maj 12, 2023 1:35:49 FM org.example.GUI getLogin
+INFO: Reading login credentials from file
+maj 12, 2023 1:35:49 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 1:38:29 FM org.example.GUI getLogin
+INFO: Reading login credentials from Swing input
+maj 12, 2023 2:28:15 FM org.example.GUI getLoginCredentials
+INFO: Reading login credentials from Swing input
+maj 12, 2023 2:39:44 FM org.example.GUI getLoginCredentials
+INFO: Reading login credentials from file
+maj 12, 2023 2:39:44 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 2:40:40 FM org.example.GUI getLoginCredentials
+INFO: Reading login credentials from file
+maj 12, 2023 2:40:40 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 2:42:38 FM org.example.GUI getLoginCredentials
+INFO: Reading login credentials from file
+maj 12, 2023 2:42:38 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
+maj 12, 2023 2:43:35 FM org.example.GUI getLoginCredentials
+INFO: Reading login credentials from Swing input
+maj 12, 2023 2:43:50 FM org.example.GUI saveCredentialsToFile
+INFO: Saving login credentials to file
+maj 12, 2023 3:31:26 FM org.example.GUI getLoginCredentials
+INFO: Reading login credentials from file
+maj 12, 2023 3:31:26 FM org.example.GUI readCredentialsFromFile
+INFO: Reading login credentials from file
