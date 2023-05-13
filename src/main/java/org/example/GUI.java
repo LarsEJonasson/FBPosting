@@ -1,19 +1,22 @@
 package org.example;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
-
+import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class GUI {
     private static final Logger LOGGER = Logger.getLogger(GUI.class.getName());
+
     static {
         try {
             FileHandler fileHandler = new FileHandler("GUI.log", true);
@@ -21,22 +24,52 @@ public class GUI {
             fileHandler.setFormatter(formatter);
             LOGGER.addHandler(fileHandler);
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Error setting up log file", e);
+            throw new RuntimeException("Error setting up log file", e);
         }
     }
-
 
     public String[] getLoginCredentials() {
         String email = null;
         String password = null;
-        String os = System.getProperty("os.name").toLowerCase();
-        String pathname = os.contains("win") ? "C:\\temp\\facebook.json" : os.contains("linux") ? "/tmp/facebook.json" : null;
-        if (pathname == null) throw new RuntimeException("Unsupported OS: " + os);
 
+        String os = System.getProperty("os.name").toLowerCase();
+        String pathname = os.contains("win")
+                ? "C:" + File.separator + "temp" + File.separator + "facebook.json"
+                : os.contains("linux")
+                ? File.separator + "tmp" + File.separator + "facebook.json"
+                : null;
+
+        if (pathname == null) {
+            throw new RuntimeException("Unsupported OS: " + os);
+        }
+
+        Path parentDir = Path.of(pathname).getParent();
+        if (!Files.exists(parentDir)) {
+            int option = JOptionPane.showConfirmDialog(null,
+                    "The directory " + parentDir + " does not exist. Do you want to create it?",
+                    "Directory not found", JOptionPane.YES_NO_OPTION);
+
+            if (option == JOptionPane.YES_OPTION) {
+                try {
+                    Files.createDirectories(parentDir);
+                    JOptionPane.showMessageDialog(null,
+                            "Directory created successfully.");
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null,
+                            "Failed to create directory: " + parentDir,
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    LOGGER.log(Level.WARNING, "Failed to create directory: " + parentDir, e);
+                }
+            }
+        }
 
         File loginFile = new File(pathname);
         if (loginFile.exists()) {
-            int choice = JOptionPane.showConfirmDialog(null, "Do you want to use saved login credentials?", "Login credentials", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int choice = JOptionPane.showConfirmDialog(null,
+                    "Do you want to use saved login credentials?",
+                    "Login credentials", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
+
             if (choice == JOptionPane.YES_OPTION) {
                 LOGGER.info("Reading login credentials from file");
                 JsonNode credentials = readCredentialsFromFile(pathname);
@@ -60,14 +93,13 @@ public class GUI {
         }
 
 
-
-
         return new String[]{email, password};
     }
 
-    public String getPost() {
+ public String getPost() {
         return JOptionPane.showInputDialog(null, "What would you like to post?");
     }
+
 
     private JsonNode readCredentialsFromFile(String pathname) {
         try {
@@ -99,3 +131,6 @@ public class GUI {
         }
     }
 }
+
+   
+
